@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 @Table(name = TableConstants.PropertyTable.NAME)
 public class Property {
     @Id

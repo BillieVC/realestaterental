@@ -7,21 +7,27 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Table
+@Entity
+@Table(name = TableConstants.FileTable.NAME)
 public class File {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String id;
+    private Long id;
 
+    @Column
     private String mimeType;
 
+    @Column
     private String name;
 
+    @Column
     private Long size;
 
+    @Column
+    @Lob
     private byte[] value;
 
-    @ManyToOne
+    @Column
     private Long propertyId;
 }

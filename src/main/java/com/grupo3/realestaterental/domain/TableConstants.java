@@ -1,6 +1,6 @@
 package com.grupo3.realestaterental.domain;
 
-public class TableConstants {
+class TableConstants {
     static class PropertyTable {
         static final String NAME = "property_table";
 
@@ -28,7 +28,11 @@ public class TableConstants {
         }
 
         static class PublicationDate {
-            static final String NAME = "users_publication_date";
+            static final String NAME = "property_publication_date";
         }
+    }
+
+    static class FileTable {
+        static final String NAME = "files_table";
     }
 }
