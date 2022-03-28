@@ -2,12 +2,10 @@ package com.grupo3.realestaterental.controller;
 
 import com.grupo3.realestaterental.dto.request.PropertyRequest;
 import com.grupo3.realestaterental.dto.response.FileResponse;
-import com.grupo3.realestaterental.dto.response.GetAllFileByPropertyResponse;
 import com.grupo3.realestaterental.dto.response.GetAllPropertyResponse;
 import com.grupo3.realestaterental.dto.response.SavedPropertyResponse;
 import com.grupo3.realestaterental.usecase.CreateFileUseCase;
 import com.grupo3.realestaterental.usecase.CreatePropertyUseCase;
-import com.grupo3.realestaterental.usecase.GetAllFilesByPropertyUseCase;
 import com.grupo3.realestaterental.usecase.GetAllPropertyUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +23,7 @@ public class PropertyController {
     @Autowired
     private GetAllPropertyUseCase getAllPropertyUseCase;
 
-    @Autowired
-    private GetAllFilesByPropertyUseCase getAllFilesByPropertyUseCase;
+
 
     @PostMapping()
     public SavedPropertyResponse saveProperty(
@@ -46,10 +43,6 @@ public class PropertyController {
         return getAllPropertyUseCase.execute();
     }
 
-    @GetMapping("/{propertyId}")
-    public GetAllFileByPropertyResponse getAllFileByProperty
-            (@PathVariable Long propertyId){
-        return getAllFilesByPropertyUseCase.execute(propertyId);
-    }
+
 
 }
