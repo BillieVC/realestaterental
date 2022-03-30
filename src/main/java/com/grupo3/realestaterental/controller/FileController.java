@@ -1,7 +1,9 @@
 package com.grupo3.realestaterental.controller;
 
 import com.grupo3.realestaterental.dto.response.FileDownloadResponse;
+import com.grupo3.realestaterental.dto.response.FileResponse;
 import com.grupo3.realestaterental.dto.response.GetAllFileByPropertyResponse;
+import com.grupo3.realestaterental.usecase.CreateFileUseCase;
 import com.grupo3.realestaterental.usecase.DownloadFileUseCase;
 import com.grupo3.realestaterental.usecase.GetAllFilesByPropertyUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,20 +11,23 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-@RestController("/files")
+@RestController()
+@RequestMapping("/files")
 public class FileController {
     @Autowired
     private GetAllFilesByPropertyUseCase getAllFilesByPropertyUseCase;
 
     @Autowired
     private DownloadFileUseCase downloadFileUseCase;
+
+    @Autowired
+    private CreateFileUseCase createFileUseCase;
 
     @GetMapping("/{propertyId}")
     public GetAllFileByPropertyResponse getAllFileByProperty
@@ -42,6 +47,9 @@ public class FileController {
                 .body(new InputStreamResource(content));
     }
 
-
-
+    @PostMapping(value = "/upload/{propertyId}", consumes = "multipart/form-data")
+    public FileResponse uploadPropertyPhoto(@RequestPart MultipartFile multipartFile,
+                                            @PathVariable Long propertyId) {
+        return createFileUseCase.execute(multipartFile, propertyId);
+    }
 }

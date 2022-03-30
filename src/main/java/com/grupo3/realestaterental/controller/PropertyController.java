@@ -18,12 +18,7 @@ public class PropertyController {
     private CreatePropertyUseCase createPropertyUseCase;
 
     @Autowired
-    private CreateFileUseCase createFileUseCase;
-
-    @Autowired
     private GetAllPropertyUseCase getAllPropertyUseCase;
-
-
 
     @PostMapping()
     public SavedPropertyResponse saveProperty(
@@ -32,11 +27,7 @@ public class PropertyController {
         return createPropertyUseCase.execute(propertyRequest);
     }
 
-    @PostMapping(value = "uploadPhoto/{propertyId}", consumes = "multipart/form-data")
-    public FileResponse uploadPropertyPhoto(@RequestPart MultipartFile multipartFile,
-                                            @PathVariable Long propertyId) {
-        return createFileUseCase.execute(multipartFile, propertyId);
-    }
+
 
     @GetMapping
     public GetAllPropertyResponse getAllProperty(){
