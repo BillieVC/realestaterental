@@ -31,7 +31,7 @@ public class FileController {
 
     @GetMapping("/{propertyId}")
     public GetAllFileByPropertyResponse getAllFileByProperty
-            (@PathVariable Long propertyId){
+            (@PathVariable Long propertyId) {
         return getAllFilesByPropertyUseCase.execute(propertyId);
     }
 

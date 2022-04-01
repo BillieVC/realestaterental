@@ -1,0 +1,7 @@
+.transition-content {
+
+    transition: box-shadow 0.2s;
+}
+.transition-content:hover {
+    box-shadow: 4px 4px 4px 4px gray;
+}

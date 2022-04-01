@@ -25,7 +25,7 @@ async function loadProperty(){
         }
 
       let cardHtml='<div class="col">\n' +
-          '                <div class="card  h-30">' +
+          '                <div class="card h-30 transition-content" style="cursor: pointer; ">' +
           '                    <h5 class="card-title" style="padding-left: 2%; padding-top: 2%;">'+prop.description+'</h5>' +
           '                    <div class="row g-0">' +
           '                        <div class="col-md-8">' +
@@ -50,11 +50,7 @@ async function loadProperty(){
     }
     document.querySelector('#mycards container').outerHTML = cards;
 
-
-
 }
-
-
 
 function getHeaders() {
     return {

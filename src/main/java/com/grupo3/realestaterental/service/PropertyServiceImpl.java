@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PropertyServiceImpl implements IPropertyService{
+public class PropertyServiceImpl implements IPropertyService {
 
     private PropertyRepository propertyRepository;
 
