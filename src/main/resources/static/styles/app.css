@@ -5,3 +5,7 @@
 .transition-content:hover {
     box-shadow: 4px 4px 4px 4px gray;
 }
+.pagMenu{
+    display: flex;
+    justify-content: center;
+}
